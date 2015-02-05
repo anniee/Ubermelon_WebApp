@@ -1,3 +1,4 @@
+
 from flask import Flask, request, session, render_template, g, redirect, url_for, flash
 import model
 import jinja2
@@ -37,14 +38,25 @@ def shopping_cart():
 
 @app.route("/add_to_cart/<int:id>")
 def add_to_cart(id):
-    """TODO: Finish shopping cart functionality using session variables to hold
-    cart list.
 
-    Intended behavior: when a melon is added to a cart, redirect them to the
-    shopping cart page, while displaying the message
-    "Successfully added to cart" """
+    # I am adding session code here,:
+     
+    if session['cart']:
+        session['cart'] = list()
+        session['cart'].append(id)
+    else:
+        session['cart'] = [id]
 
-    return "Oops! This needs to be implemented!"
+        # print session
+
+    flash("Item added to cart!")
+    return render_template("cart.html")
+
+    return session
+    melon_id_no = session[0]
+    print melon_id_no
+# got rid of return 'oops this needs to be implemented' string
+        # return 
 
 
 @app.route("/login", methods=["GET"])
@@ -54,6 +66,9 @@ def show_login():
 
 @app.route("/login", methods=["POST"])
 def process_login():
+
+
+
     """TODO: Receive the user's login credentials located in the 'request.form'
     dictionary, look up the user, and store them in the session."""
     return "Oops! This needs to be implemented"
