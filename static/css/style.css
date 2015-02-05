@@ -71,5 +71,8 @@ div.cart {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+/*adding height 15px to make cart image that size*/
 img.melon-cart {
+  height: 15px;
 }
